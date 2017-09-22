@@ -1,7 +1,60 @@
 # Team Training Plan
 Below you will find each of our training plans.
 
-## {Blake Bowdoin}
+
+## Joel Shellabarger
+Explain your main role on the project here.
+
+
+- Complete lessons 1-5 (udacity).
+  - Learn how to create a simple application, crerate layouts, connect to internet and web API's, how to add menus, convert data in UI elements
+  differnce between Explicit and Implicit intent, how to navigate in the app using intents, and how to persist data.  
+  This will take approximately 20-25 hours.
+  - Training will take place on udacity.
+
+- Complete lessons 6-10 (udacity).
+  - Learn how to allow user customization, implement SQLite database, make queries to and modify app database, how to build content provider 
+  and how to interface with it, as well as consume data from exsisting content providers and how to schedule and run job in the background of the app.  
+  This will take approximately 20-25 hours.
+  - Training will take place on udacity.
+
+
+
+- Training Item N.
+  - What I will be doing and how long it will take.
+  - Where the training resource is.
+
+  ## Jackson Sills
+Explain your main role on the project here.
+
+- Training Item 1.
+  - What I will be doing and how long it will take.
+  - Where the training resource is.
+
+- Training Item 2.
+  - What I will be doing and how long it will take.
+  - Where the training resource is.
+
+- Training Item N.
+  - What I will be doing and how long it will take.
+  - Where the training resource is.
+  
+  ## Elliott Burkett
+Explain your main role on the project here.
+
+- Training Item 1.
+  - What I will be doing and how long it will take.
+  - Where the training resource is.
+
+- Training Item 2.
+  - What I will be doing and how long it will take.
+  - Where the training resource is.
+
+- Training Item N.
+  - What I will be doing and how long it will take.
+  - Where the training resource is.
+  
+  ## Blake Bowdoin
 Blake will mainly be developing the functionaly for the app and will fill in wherever necessary. Blake will be completing lessons 1-10 of the 
 udacity tutorials on developing Android applications, which include interactive quizes, turoitials and code examples.
 
@@ -16,5 +69,7 @@ udacity tutorials on developing Android applications, which include interactive 
   and how to interface with it, as well as consume data from exsisting content providers and how to schedule and run job in the background of the app.  
   This will take approximately 20-25 hours.
   - Training will take place on udacity.
+
+
 
 
