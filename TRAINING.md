@@ -36,20 +36,26 @@ Explain your main role on the project here.
   - Where the training resource is.
   
   ## Elliott Burkett
-Explain your main role on the project here.
+My main role in the project is to learn the programming languages that come with building an Android app with Android Studio.
+I will also be learning how to design the app to better suit the user experience, once functionality has began to take shape.
+I will also be working on the Geo location part of the app, and assisting Blake with the security level of the application.
 
 
-- Training Item 1.
-  - What I will be doing and how long it will take.
-  - Where the training resource is.
+- Training Item 1. (udacity 1-6)
+  - Along with my other teammates, I will be completing the udacity tutorials on how to build and android application.
+  - The training resource is on udacityies website and is approximately 60 hours worth of how-to's and video tutorials.
+  - Lessons 1-6 are creating the basics, pulling data from the internet, intents, all the way to custimization and preferances.
+  - This will take approximately  25 hours
+  
 
-- Training Item 2.
-  - What I will be doing and how long it will take.
-  - Where the training resource is.
+- Training Item 2. (udacity 7-12)
+  - I will be learing about sql, content providers, background tasks, user interface, and also UI layout fixes
+  - This training will come from udacity, and parts 7-12 will take approximately 35 hours
 
 - Training Item N.
-  - What I will be doing and how long it will take.
-  - Where the training resource is.
+  - Other forms of perparing for the Android app will be reading from the internet, using stack overflow, watching youtube, and other sources
+  that I will find throughout the semesters to come.
+  - This time frame will just be the time I need to successfully finish this project
   
   ## Blake Bowdoin
 Blake will mainly be developing the functionaly for the app and will fill in wherever necessary. Blake will be completing lessons 1-10 of the 
