@@ -21,22 +21,18 @@ Joel is going to be one of the main developers for the application. This means l
 
 
   ## Jackson Sills
-I will make sure to be fluent on github and android studio as well as work on the design of our project and ensuring the user interation flow is smooth and painless.
+I will make sure to be fluent on github and android studio as well as work on the design of our project and ensuring 
+the user interation flow is smooth and painless.
 
 	
 - udacity 1-5 learing tutorials
-
   - I will be taking the udacity android studio classes to ensure my knowledge on the operating system
-
   - This class will take 20 -25 hours to complete.
 
 
-
 - udacity 6-10 learing modules
-
   - This portion of the class will be focusing on the fundamentals of user interfaces as well as the importance of design.
-  
-- This class will take 20 hours to complete.
+  - This class will take 20 hours to complete.
 
 
   
