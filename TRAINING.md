@@ -21,19 +21,24 @@ Joel is going to be one of the main developers for the application. This means l
 
 
   ## Jackson Sills
-Explain your main role on the project here.
+I will make sure to be fluent on github and android studio as well as work on the design of our project and ensuring the user interation flow is smooth and painless.
 
-- Training Item 1.
-  - What I will be doing and how long it will take.
-  - Where the training resource is.
+	
+- udacity 1-5 learing tutorials
 
-- Training Item 2.
-  - What I will be doing and how long it will take.
-  - Where the training resource is.
+  - I will be taking the udacity android studio classes to ensure my knowledge on the operating system
 
-- Training Item N.
-  - What I will be doing and how long it will take.
-  - Where the training resource is.
+  - This class will take 20 -25 hours to complete.
+
+
+
+- udacity 6-10 learing modules
+
+  - This portion of the class will be focusing on the fundamentals of user interfaces as well as the importance of design.
+  
+- This class will take 20 hours to complete.
+
+
   
   ## Elliott Burkett
 My main role in the project is to learn the programming languages that come with building an Android app with Android Studio.
