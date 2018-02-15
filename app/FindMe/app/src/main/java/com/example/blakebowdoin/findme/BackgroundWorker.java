@@ -30,8 +30,8 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
     @Override
     protected String doInBackground(String... params) {
         String type = params[0];
-        String login_url = "https://cgi.soic.indiana.edu/~bowdoinb/FindMeLogin.php";
-        String register_url = "https://cgi.soic.indiana.edu/~bowdoinb/FindMeRegister.php";
+        String login_url = "https://cgi.soic.indiana.edu/~team48/FindMeLogin.php";
+        String register_url = "https://cgi.soic.indiana.edu/~team48/FindMeRegister.php";
         if(type.equals("login")) {
             try {
                 String username = params[1];
@@ -59,7 +59,8 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, ViewGroupActivity.class);
+                intent.putExtra("username", username);
                 context.startActivity(intent);
                 return result;
             } catch (MalformedURLException e) {
