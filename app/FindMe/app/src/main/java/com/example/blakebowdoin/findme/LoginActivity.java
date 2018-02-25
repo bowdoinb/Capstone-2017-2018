@@ -35,4 +35,6 @@ public class LoginActivity extends AppCompatActivity {
     public void OpenReg(View view) {
         startActivity(new Intent(this, RegisterActivity.class));
     }
+
+
 }
