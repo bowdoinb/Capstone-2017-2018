@@ -65,6 +65,7 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
+                //Intent intent = new Intent(context, CreateGroup.class);
                 Intent intent = new Intent(context, ViewGroupActivity.class);
                 intent.putExtra("username", username);
                 context.startActivity(intent);
@@ -186,9 +187,6 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-                //Intent intent = new Intent(context, MemberAdd.class);
-                //intent.putExtra("username", Username);
-                //context.startActivity(intent);
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
