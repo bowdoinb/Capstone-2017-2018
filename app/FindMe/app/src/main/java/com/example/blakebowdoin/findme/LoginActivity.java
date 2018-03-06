@@ -1,6 +1,8 @@
 package com.example.blakebowdoin.findme;
 
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.etPassword);
         final Button bLogin = (Button) findViewById(R.id.bLogin);
         final TextView registerLink = (TextView) findViewById(R.id.tvRegisterHere);
+
     }
 
     public void OnLogin(View view){
@@ -35,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     public void OpenReg(View view) {
         startActivity(new Intent(this, RegisterActivity.class));
     }
+
 
 
 }
