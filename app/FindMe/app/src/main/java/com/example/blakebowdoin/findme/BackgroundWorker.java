@@ -36,6 +36,7 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
         String register_url = "http://cgi.soic.indiana.edu/~team48/FindMeRegister.php";
         String create_url = "http://cgi.soic.indiana.edu/~team48/FindMeGroupCreate.php";
         String memberAdd_url = "http://cgi.soic.indiana.edu/~team48/FindMeMemberAdd.php";
+        String updateLocation_url = "http://cgi.soic.indiana.edu/~team48/FindMeUpdateLocation.php";
 
         if(type.equals("login")) {
             //If a registered user is trying to login
@@ -193,9 +194,47 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        else if(type.equals("updateLocation")){
+            //If a user that is Logged into the app wants to create a new group
+            try {
+                String str_username = params[1];
+                String str_latitude = params[2];
+                String str_longitude = params[3];
+                URL url = new URL(updateLocation_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("username", "UTF-8")+"="+URLEncoder.encode(str_username, "UTF-8")+"&"
+                        +URLEncoder.encode("latitude", "UTF-8")+"="+URLEncoder.encode(str_latitude, "UTF-8")
+                        +"&" +URLEncoder.encode("longitude", "UTF-8")+"="+URLEncoder.encode(str_longitude, "UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result="";
+                String line="";
+                while((line = bufferedReader.readLine()) != null) {
+                    result+=line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
 
         }
+
 
         return null;
     }

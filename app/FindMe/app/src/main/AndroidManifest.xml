@@ -3,7 +3,9 @@
     package="com.example.blakebowdoin.findme">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-feature android:name="android.hardware.location.gps"/>
 
     <application
         android:allowBackup="true"
@@ -35,11 +37,13 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyAm2ABD2G4Vc-qDV6Y0tz9TDogUxk6xHgI" />
 
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"></activity>
+        
+        <!--<service android:name=".GPS_Service"/>-->
     </application>
 
 </manifest>

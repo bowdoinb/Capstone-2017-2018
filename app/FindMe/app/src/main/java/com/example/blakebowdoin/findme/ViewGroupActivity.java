@@ -1,8 +1,15 @@
 package com.example.blakebowdoin.findme;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,7 +35,9 @@ public class ViewGroupActivity extends AppCompatActivity {
     ListView listView;
     String username;
 
+
     //String[] listValue = new String[] {"ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT"};
+
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -38,6 +47,9 @@ public class ViewGroupActivity extends AppCompatActivity {
         getJSON("http://cgi.soic.indiana.edu/~team48/FindMeViewGroups.php");
 
         username = getIntent().getExtras().getString("username");
+
+
+
 
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 //            @Override
@@ -58,6 +70,8 @@ public class ViewGroupActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
+
 
 
     private void getJSON(final String urlWebService){
@@ -134,8 +148,8 @@ public class ViewGroupActivity extends AppCompatActivity {
                 //Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
 
                 String TempListViewClickedValue = groupid[position].toString();
-                Intent intent = new Intent(ViewGroupActivity.this, MapActivity.class);
-                intent.putExtra("ListViewClickedValue", TempListViewClickedValue);
+                Intent intent = new Intent(ViewGroupActivity.this, MapsActivity.class);
+                intent.putExtra("GroupID", TempListViewClickedValue);
                 startActivity(intent);
 
                 //startActivity(new Intent(ViewGroupActivity.this, MapActivity.class));
