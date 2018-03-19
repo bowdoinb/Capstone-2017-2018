@@ -33,7 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        GroupID = getIntent().getExtras().getString("GroupID");
+        //GroupID = getIntent().getExtras().getString("GroupID");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -68,8 +68,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             protected void onPostExecute(String s){
-                //super.onPostExecute(s);
-                //Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
                 try{
                     loadIntoMap(s);
                 }catch (JSONException e){
@@ -81,6 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             protected String doInBackground(Void...voids){
 
                 try{
+                    GroupID = getIntent().getExtras().getString("GroupID");
                     URL url = new URL(urlWebService);
                     HttpURLConnection con = (HttpURLConnection)url.openConnection();
                     con.setRequestMethod("POST");
@@ -116,14 +115,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         JSONArray jsonArray = new JSONArray(json);
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            // Create a marker for each city in the JSON data.
+            // Create a marker for each user in the JSON data.
             JSONObject jsonObj = jsonArray.getJSONObject(i);
+            double latitude = Double.parseDouble(jsonObj.getString("Latitude").trim());
+            double longitude = Double.parseDouble(jsonObj.getString("Longitude").trim());
             mMap.addMarker(new MarkerOptions()
                     .title(jsonObj.getString("Username"))
-                    .position(new LatLng(
-                            jsonObj.getJSONArray("lat").getDouble(1),
-                            jsonObj.getJSONArray("lng").getDouble(2)
-                    )));
+                    .position(new LatLng(latitude, longitude)));
 
 
         }

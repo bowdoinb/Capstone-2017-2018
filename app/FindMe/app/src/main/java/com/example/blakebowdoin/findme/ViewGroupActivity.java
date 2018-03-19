@@ -148,7 +148,7 @@ public class ViewGroupActivity extends AppCompatActivity {
                 //Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
 
                 String TempListViewClickedValue = groupid[position].toString();
-                Intent intent = new Intent(ViewGroupActivity.this, MapsActivity.class);
+                Intent intent = new Intent(ViewGroupActivity.this, MapActivity.class);
                 intent.putExtra("GroupID", TempListViewClickedValue);
                 startActivity(intent);
 
