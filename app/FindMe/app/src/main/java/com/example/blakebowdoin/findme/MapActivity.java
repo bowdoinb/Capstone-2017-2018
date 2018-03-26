@@ -17,6 +17,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +28,9 @@ import com.google.android.gms.location.LocationServices;
 
 public class MapActivity extends AppCompatActivity implements LocationListener {
 
-    TextView textView;
-    String username, string_latitude, string_longitude;
+    //TextView textView;
+    EditText etLocation;
+    String username;
     private LocationManager locationManager;
     private String provider;
 
@@ -38,17 +40,17 @@ public class MapActivity extends AppCompatActivity implements LocationListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        textView = (TextView) findViewById(R.id.textView);
-        String TempHolder = getIntent().getStringExtra("ListViewClickedValue");
+        etLocation = (EditText)findViewById(R.id.etLocation);
+        //String TempHolder = getIntent().getStringExtra("ListViewClickedValue");
         //textView.setText(TempHolder);
-        username = "User2";
+        username = getIntent().getExtras().getString("username");
 
         // Get the location manager
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         // Define the criteria how to select the locatioin provider -> use
         // default
         //Criteria criteria = new Criteria();
-        //provider = locationManager.getBestProvider(criteria, false);
+       // provider = locationManager.getBestProvider(criteria, false);
 
 
 
@@ -100,7 +102,7 @@ public class MapActivity extends AppCompatActivity implements LocationListener {
         String type = "updateLocation";
         BackgroundWorker updateRequest = new BackgroundWorker(this);
         updateRequest.execute(type, username, latitude, longitude);
-        textView.setText(latitude + " " + longitude);
+        etLocation.setText(latitude + " " + longitude);
     }
 
     @Override

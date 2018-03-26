@@ -44,9 +44,14 @@ public class ViewGroupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_group);
 
         listView = (ListView) findViewById(R.id.listView);
+
+        //enableService();
+
         getJSON("http://cgi.soic.indiana.edu/~team48/FindMeViewGroups.php");
 
         username = getIntent().getExtras().getString("username");
+
+
 
 
 
@@ -70,6 +75,12 @@ public class ViewGroupActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
+//        private void enableService() {
+//        Intent intent = new Intent(getApplicationContext(), GPS_Service.class);
+//        intent.putExtra("username", username);
+//        startService(intent);
+//    }
 
 
 
@@ -144,12 +155,15 @@ public class ViewGroupActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 String item = ((TextView)view).getText().toString();
+                //Bundle extras = new Bundle();
 
                 //Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
 
                 String TempListViewClickedValue = groupid[position].toString();
-                Intent intent = new Intent(ViewGroupActivity.this, MapActivity.class);
+                Intent intent = new Intent(ViewGroupActivity.this, MapsActivity.class);
                 intent.putExtra("GroupID", TempListViewClickedValue);
+                intent.putExtra("username", username);
+                //intent.putExtras(extras);
                 startActivity(intent);
 
                 //startActivity(new Intent(ViewGroupActivity.this, MapActivity.class));
