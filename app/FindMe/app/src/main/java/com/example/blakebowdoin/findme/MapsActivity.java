@@ -49,7 +49,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         GroupID = getIntent().getExtras().getString("GroupID");
         username = getIntent().getExtras().getString("username");
-        //GroupID = getIntent().getExtras().getString("GroupID");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -57,6 +56,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 //        Criteria criteria = new Criteria();
+//        criteria.setAccuracy(Criteria.ACCURACY_LOW);
+//        criteria.setPowerRequirement(Criteria.POWER_HIGH);
 //        provider = locationManager.getBestProvider(criteria, true);
     }
 
@@ -88,7 +89,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // for ActivityCompat#requestPermissions for more details.
             return;
         } else {
-            locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 5000, 10, this);
+            locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER, 10000, 10, this);
+            //locationManager.GPS_PROVIDER
 
         }
 
@@ -105,7 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         switch(requestCode){
             case 1:
                 if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 5000, 10, this);
+                    locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER, 10000, 10, this);
         }
     }
 

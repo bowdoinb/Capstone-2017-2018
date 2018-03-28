@@ -26,7 +26,7 @@ import android.widget.TextView;
  * Created by Joel Shellabarger on 1/21/2018.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity{
     EditText etUsername, etPassword;
     Button bLogin;
 

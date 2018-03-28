@@ -49,8 +49,10 @@ public class MapActivity extends AppCompatActivity implements LocationListener {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         // Define the criteria how to select the locatioin provider -> use
         // default
-        //Criteria criteria = new Criteria();
-       // provider = locationManager.getBestProvider(criteria, false);
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setPowerRequirement(Criteria.POWER_MEDIUM);
+        provider = locationManager.getBestProvider(criteria, true);
 
 
 
@@ -75,6 +77,7 @@ public class MapActivity extends AppCompatActivity implements LocationListener {
             return;
         } else {
             locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 5000, 10, this);
+            //locationManager.GPS_PROVIDER
         }
     }
 
