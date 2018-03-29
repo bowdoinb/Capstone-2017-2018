@@ -1,16 +1,13 @@
 package com.example.blakebowdoin.findme;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -43,6 +40,11 @@ public class ViewGroupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_group);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setTitleTextColor(android.graphics.Color.WHITE);
+
         listView = (ListView) findViewById(R.id.listView);
         getJSON("http://cgi.soic.indiana.edu/~team48/FindMeViewGroups.php");
 
@@ -71,8 +73,32 @@ public class ViewGroupActivity extends AppCompatActivity {
 //        });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_view_groups, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
 
+        if (id == R.id.item1){
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra("username", username);
+            this.startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.item2){
+            Intent intent = new Intent(this, LoginActivity.class);
+            this.startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     private void getJSON(final String urlWebService){
 
@@ -148,7 +174,7 @@ public class ViewGroupActivity extends AppCompatActivity {
                 //Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
 
                 String TempListViewClickedValue = groupid[position].toString();
-                Intent intent = new Intent(ViewGroupActivity.this, MapActivity.class);
+                Intent intent = new Intent(ViewGroupActivity.this, MapsActivity.class);
                 intent.putExtra("GroupID", TempListViewClickedValue);
                 startActivity(intent);
 
