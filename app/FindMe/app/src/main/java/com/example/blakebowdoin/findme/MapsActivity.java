@@ -1,8 +1,20 @@
 package com.example.blakebowdoin.findme;
 
+import android.*;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,20 +36,29 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
-    String GroupID;
+    String GroupID, username;
+    private LocationManager locationManager;
+    private String provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        //GroupID = getIntent().getExtras().getString("GroupID");
+        GroupID = getIntent().getExtras().getString("GroupID");
+        username = getIntent().getExtras().getString("username");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+//        Criteria criteria = new Criteria();
+//        criteria.setAccuracy(Criteria.ACCURACY_LOW);
+//        criteria.setPowerRequirement(Criteria.POWER_HIGH);
+//        provider = locationManager.getBestProvider(criteria, true);
     }
 
 
@@ -50,15 +71,75 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        getJSON("http://cgi.soic.indiana.edu/~team48/FindMeGetLocations.php");
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{
+                    android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.INTERNET
+            }, 1 );
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        } else {
+            locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER, 10000, 10, this);
+            //locationManager.GPS_PROVIDER
+
+        }
+
+        //getJSON("http://cgi.soic.indiana.edu/~team48/FindMeGetLocations.php");
         // Add a marker in Sydney and move the camera
 //        LatLng sydney = new LatLng(-34, 151);
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    @SuppressLint("MissingPermission")
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
+        switch(requestCode){
+            case 1:
+                if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER, 10000, 10, this);
+        }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        String latitude = Double.toString(location.getLatitude());
+        String longitude = Double.toString(location.getLongitude());
+        String type = "updateLocation";
+        BackgroundWorker updateRequest = new BackgroundWorker(this);
+        updateRequest.execute(type, username, latitude, longitude);
+        getJSON("http://cgi.soic.indiana.edu/~team48/FindMeGetLocations.php");
+
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        Toast.makeText(this, "Enabled new provider " + provider,
+                Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Toast.makeText(this, "Disabled provider " + provider,
+                Toast.LENGTH_SHORT).show();
     }
 
 
@@ -79,7 +160,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             protected String doInBackground(Void...voids){
 
                 try{
-                    GroupID = getIntent().getExtras().getString("GroupID");
                     URL url = new URL(urlWebService);
                     HttpURLConnection con = (HttpURLConnection)url.openConnection();
                     con.setRequestMethod("POST");
@@ -113,6 +193,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void loadIntoMap(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
+        mMap.clear();
 
         for (int i = 0; i < jsonArray.length(); i++) {
             // Create a marker for each user in the JSON data.
