@@ -97,13 +97,20 @@ public class ViewGroupActivity extends AppCompatActivity {
 
 
         if (id == R.id.item1){
-            Intent intent = new Intent(this, SettingsActivity.class);
+            Intent intent = new Intent(this, CreateGroup.class);
             intent.putExtra("username", username);
             this.startActivity(intent);
             return true;
         }
 
         if (id == R.id.item2){
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra("username", username);
+            this.startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.item3){
             Intent intent = new Intent(this, LoginActivity.class);
             this.startActivity(intent);
             return true;
@@ -202,6 +209,12 @@ public class ViewGroupActivity extends AppCompatActivity {
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, groups);
         listView.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        getJSON("http://cgi.soic.indiana.edu/~team48/FindMeViewGroups.php");
     }
 
 }

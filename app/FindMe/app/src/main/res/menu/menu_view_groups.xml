@@ -4,9 +4,12 @@
     tools:context="com.example.blakebowdoin.findme.ViewGroupActivity">
     <item
         android:id="@+id/item1"
-        android:title="@string/action_settings"
+        android:title="New Group"
         app:showAsAction="never" />
     <item
         android:id="@+id/item2"
+        android:title="Settings"/>
+    <item
+        android:id="@+id/item3"
         android:title="Log Out"/>
 </menu>
