@@ -177,4 +177,10 @@ public class ViewGroupActivity extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getJSON("http://cgi.soic.indiana.edu/~team48/FindMeViewGroups.php");
+    }
+
 }

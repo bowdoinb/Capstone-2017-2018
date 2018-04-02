@@ -66,10 +66,13 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
-                //Intent intent = new Intent(context, CreateGroup.class);
                 Intent intent = new Intent(context, ViewGroupActivity.class);
                 intent.putExtra("username", username);
                 context.startActivity(intent);
+//                String[] array = {};
+//                array[0] = result;
+//                array[1] = username;
+//                return array;
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -111,6 +114,9 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
                 httpURLConnection.disconnect();
                 Intent intent = new Intent(context, LoginActivity.class);
                 context.startActivity(intent);
+//                String[] array = {};
+//                array[0] = result;
+//                return array;
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -150,6 +156,9 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
                 intent.putExtra("name", str_name);
                 intent.putExtra("creator", str_username);
                 context.startActivity(intent);
+//                String[] array = {};
+//                array[0] = result;
+//                return array;
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -188,6 +197,9 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
+//                String[] array = {};
+//                array[0] = result;
+//                return array;
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -225,6 +237,9 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
+//                String[] array = {};
+//                array[0] = result;
+//                return array;
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -245,7 +260,17 @@ public class BackgroundWorker extends AsyncTask<String, Void, String>{
     }
 
     @Override
-    protected void onPostExecute(String result) {
+    protected void onPostExecute(String array) {
+//        switch(array[0]){
+//            case "LoginSuccess":
+//                Intent intent = new Intent(context, ViewGroupActivity.class);
+//                intent.putExtra("username", array[1]);
+//                context.startActivity(intent);
+//                break;
+//            case "LoginFailed":
+//                LoginActivity loginActivity = new LoginActivity();
+//                loginActivity.OnLoginFailed();
+        //}
         /*Intent intent = new Intent(context, MapActivity.class);
         context.startActivity(intent);*/
     }

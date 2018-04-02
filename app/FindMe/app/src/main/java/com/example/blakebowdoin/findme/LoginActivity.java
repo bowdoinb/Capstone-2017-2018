@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Joel Shellabarger on 1/21/2018.
@@ -102,5 +103,8 @@ public class LoginActivity extends AppCompatActivity{
     }
 
 
+    public void OnLoginFailed(){
+        Toast.makeText(this, "Username or Password incorrect", Toast.LENGTH_SHORT).show();
+    }
 
 }

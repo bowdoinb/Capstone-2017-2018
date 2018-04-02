@@ -90,7 +90,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         } else {
             locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER, 10000, 10, this);
-            //locationManager.GPS_PROVIDER
+
 
         }
 

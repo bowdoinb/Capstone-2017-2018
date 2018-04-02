@@ -32,5 +32,6 @@ dependencies {
 
     compile 'com.google.android.gms:play-services:11.8.0'
     compile 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.android.support:design:27.1.0'
 }
 apply plugin: 'com.android.application'
