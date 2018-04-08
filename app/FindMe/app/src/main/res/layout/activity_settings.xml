@@ -6,13 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.blakebowdoin.findme.SettingsActivity">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:visibility="visible" />
+
     <Switch
         android:id="@+id/switchLocation"
         android:layout_width="347dp"
         android:layout_height="59dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:text="Location"
         android:textSize="18sp"
         android:checked="true"

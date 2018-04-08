@@ -5,4 +5,12 @@
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.blakebowdoin.findme.MapsActivity" />
+    tools:context="com.example.blakebowdoin.findme.MapsActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:visibility="visible" />
+
+</fragment>
+

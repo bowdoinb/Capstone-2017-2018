@@ -172,7 +172,7 @@ public class ViewGroupActivity extends AppCompatActivity {
     public void loadIntoListView(String json) throws JSONException{
         JSONArray jsonArray = new JSONArray(json);
 
-        String[] groups = new String[jsonArray.length()];
+        final String[] groups = new String[jsonArray.length()];
         final String[] groupid = new String[jsonArray.length()];
 
         for (int i = 0; i < jsonArray.length(); i++){
@@ -194,9 +194,11 @@ public class ViewGroupActivity extends AppCompatActivity {
                 //Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
 
                 String TempListViewClickedValue = groupid[position].toString();
+                String TempListViewName = groups[position].toString();
                 Intent intent = new Intent(ViewGroupActivity.this, MapsActivity.class);
                 intent.putExtra("GroupID", TempListViewClickedValue);
                 intent.putExtra("username", username);
+                intent.putExtra("name", TempListViewName);
                 //intent.putExtras(extras);
                 startActivity(intent);
 

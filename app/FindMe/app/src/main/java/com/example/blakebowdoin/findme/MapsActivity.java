@@ -1,22 +1,24 @@
 package com.example.blakebowdoin.findme;
 
-import android.*;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -36,10 +38,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
-    String GroupID, username;
+    String GroupID, username, name;
     private LocationManager locationManager;
     private String provider;
 
@@ -49,11 +51,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         GroupID = getIntent().getExtras().getString("GroupID");
         username = getIntent().getExtras().getString("username");
+        name = getIntent().getExtras().getString("name");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setTitleTextColor(android.graphics.Color.WHITE);
 
 //        Criteria criteria = new Criteria();
 //        criteria.setAccuracy(Criteria.ACCURACY_LOW);
@@ -206,6 +214,55 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_member_add, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+//        private void enableService() {
+//        Intent intent = new Intent(getApplicationContext(), GPS_Service.class);
+//        intent.putExtra("username", username);
+//        startService(intent);
+//    }
+
+
+
+        if (id == R.id.item1){
+            Intent intent = new Intent(this, CreateGroup.class);
+            intent.putExtra("username", username);
+            this.startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.item2){
+            Intent intent = new Intent(this, MemberAdd.class);
+            intent.putExtra("creator", username);
+            intent.putExtra("name", name);
+            this.startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.item3){
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra("username", username);
+            this.startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.item4){
+            Intent intent = new Intent(this, LoginActivity.class);
+            this.startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }
