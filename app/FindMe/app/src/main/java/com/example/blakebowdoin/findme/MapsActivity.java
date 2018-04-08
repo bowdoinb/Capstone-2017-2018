@@ -41,7 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     String GroupID, username;
     private LocationManager locationManager;
-    private String provider;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-//        Criteria criteria = new Criteria();
-//        criteria.setAccuracy(Criteria.ACCURACY_LOW);
-//        criteria.setPowerRequirement(Criteria.POWER_HIGH);
-//        provider = locationManager.getBestProvider(criteria, true);
+
     }
 
 
@@ -94,7 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-        //getJSON("http://cgi.soic.indiana.edu/~team48/FindMeGetLocations.php");
+
         // Add a marker in Sydney and move the camera
 //        LatLng sydney = new LatLng(-34, 151);
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));

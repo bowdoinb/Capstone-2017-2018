@@ -33,9 +33,6 @@ public class ViewGroupActivity extends AppCompatActivity {
     String username;
 
 
-    //String[] listValue = new String[] {"ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT"};
-
-
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_group);
@@ -47,7 +44,6 @@ public class ViewGroupActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listView);
 
-        //enableService();
 
         getJSON("http://cgi.soic.indiana.edu/~team48/FindMeViewGroups.php");
 
@@ -58,24 +54,7 @@ public class ViewGroupActivity extends AppCompatActivity {
 
 
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-//                String item = ((TextView)view).getText().toString();
-//
-//                //Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
-//
-//                String TempListViewClickedValue = groupid[position].toString();
-//                Intent intent = new Intent(ViewGroupActivity.this, MapActivity.class);
-//                intent.putExtra("ListViewClickedValue", TempListViewClickedValue);
-//                startActivity(intent);
-//
-//                //startActivity(new Intent(ViewGroupActivity.this, MapActivity.class));
-//                //Intent MapActivityIntent = new Intent(ViewGroupActivity.this, MapActivity.class);
-//                //MapActivityIntent.putExtra("my.package.dataToPass", dataFromClickedRow);
-//                //startActivity(MapActivityIntent);
-//            }
-//        });
+
     }
 
     @Override
@@ -88,11 +67,7 @@ public class ViewGroupActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
-//        private void enableService() {
-//        Intent intent = new Intent(getApplicationContext(), GPS_Service.class);
-//        intent.putExtra("username", username);
-//        startService(intent);
-//    }
+
 
 
 
@@ -125,8 +100,6 @@ public class ViewGroupActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String s){
-                //super.onPostExecute(s);
-                //Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
                 try{
                     loadIntoListView(s);
                 }catch (JSONException e){
@@ -189,21 +162,13 @@ public class ViewGroupActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 String item = ((TextView)view).getText().toString();
-                //Bundle extras = new Bundle();
-
-                //Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
 
                 String TempListViewClickedValue = groupid[position].toString();
                 Intent intent = new Intent(ViewGroupActivity.this, MapsActivity.class);
                 intent.putExtra("GroupID", TempListViewClickedValue);
                 intent.putExtra("username", username);
-                //intent.putExtras(extras);
                 startActivity(intent);
 
-                //startActivity(new Intent(ViewGroupActivity.this, MapActivity.class));
-                //Intent MapActivityIntent = new Intent(ViewGroupActivity.this, MapActivity.class);
-                //MapActivityIntent.putExtra("my.package.dataToPass", dataFromClickedRow);
-                //startActivity(MapActivityIntent);
             }
         });
 
