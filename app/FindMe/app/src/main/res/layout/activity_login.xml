@@ -4,13 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.blakebowdoin.findme.LoginActivity">
+    tools:context="com.example.blakebowdoin.findme.LoginActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:visibility="visible" />
+
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="64dp"
+            android:ems="10"
+            android:hint="Username" />
+
 
         <TextView
             android:id="@+id/tvRegisterHere"
@@ -18,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="246dp"
+            android:layout_marginTop="240dp"
             android:onClick="OpenReg"
             android:text="Register Here"
             android:textStyle="bold"
@@ -31,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="182dp"
+            android:layout_marginTop="174dp"
             android:background="@android:color/holo_red_dark"
             android:onClick="OnLogin"
             android:text="Login"
@@ -45,33 +68,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="123dp"
+            android:layout_marginTop="118dp"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etUsername" />
-
-        <EditText
-            android:id="@+id/etUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="66dp"
-            android:ems="10"
-
-            android:hint="Username"
-            android:inputType="textPersonName"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
     </RelativeLayout>
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        android:visibility="visible" />
 
 </android.support.constraint.ConstraintLayout>
