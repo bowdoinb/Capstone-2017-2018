@@ -1,10 +1,9 @@
 package com.example.blakebowdoin.findme;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MemberAdd extends AppCompatActivity {
@@ -19,7 +18,6 @@ public class MemberAdd extends AppCompatActivity {
 
         name = getIntent().getExtras().getString("name");
         creator = getIntent().getExtras().getString("creator");
-
     }
 
     public void onMemberAdd(View view){
