@@ -43,7 +43,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     String GroupID, username, name;
     private LocationManager locationManager;
-    private String provider;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +63,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         toolbar.setTitleTextColor(android.graphics.Color.WHITE);
 
-//        Criteria criteria = new Criteria();
-//        criteria.setAccuracy(Criteria.ACCURACY_LOW);
-//        criteria.setPowerRequirement(Criteria.POWER_HIGH);
-//        provider = locationManager.getBestProvider(criteria, true);
     }
 
 
@@ -102,7 +98,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         }
 
-        //getJSON("http://cgi.soic.indiana.edu/~team48/FindMeGetLocations.php");
+
         // Add a marker in Sydney and move the camera
 //        LatLng sydney = new LatLng(-34, 151);
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
