@@ -9,9 +9,9 @@ locations on a map.
 | AI | {Harper, Brian} {bpharper@indiana.edu} |
 
 # Team
-- Bowdoin, Blake (Role) bowdoinb@umail.iu.edu
+- Bowdoin, Blake (Co-Lead Developer) bowdoinb@umail.iu.edu
 - Burkett, Elliott (Role) edburket@indiana.edu
-- Shellabarger, Joel (Role) jshellab@indiana.edu
+- Shellabarger, Joel (Co-Lead Developer) jshellab@indiana.edu
 - Sills, Jack (Role) jacksills94@gmail.com
 
 # App Information
