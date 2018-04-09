@@ -10,7 +10,7 @@ locations on a map.
 
 # Team
 - Bowdoin, Blake (Co-Lead Developer) bowdoinb@umail.iu.edu
-- Burkett, Elliott (Role) edburket@indiana.edu
+- Burkett, Elliott (Designer) edburket@indiana.edu
 - Shellabarger, Joel (Co-Lead Developer) jshellab@indiana.edu
 - Sills, Jack (Role) jacksills94@gmail.com
 
