@@ -3,6 +3,7 @@ package com.example.blakebowdoin.findme;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,8 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
         Email = (EditText)findViewById(R.id.etEmail);
         Password = (EditText)findViewById(R.id.etPassword);
 
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setTitle("FindMe");
     }
-
 
     //Activate when a user clicks the Register Button
     public void onRegister(View view){
