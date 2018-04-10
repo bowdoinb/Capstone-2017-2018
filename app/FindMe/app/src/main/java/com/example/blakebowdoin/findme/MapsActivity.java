@@ -228,8 +228,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 //        startService(intent);
 //    }
 
-
-
         if (id == R.id.item1){
             Intent intent = new Intent(this, CreateGroup.class);
             intent.putExtra("username", username);

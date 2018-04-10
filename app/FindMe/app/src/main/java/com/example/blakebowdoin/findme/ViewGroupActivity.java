@@ -49,12 +49,6 @@ public class ViewGroupActivity extends AppCompatActivity {
 
         username = getIntent().getExtras().getString("username");
 
-
-
-
-
-
-
     }
 
     @Override
@@ -67,9 +61,6 @@ public class ViewGroupActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
-
-
-
 
         if (id == R.id.item1){
             Intent intent = new Intent(this, CreateGroup.class);
