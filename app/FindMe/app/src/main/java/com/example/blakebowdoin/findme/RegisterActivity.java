@@ -97,14 +97,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     //If the User's chosen Username is not already taken, calls this function, takes them to the Login Screen
     public void OnRegisterSuccess(){
-        Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 
     //If the User's chosen Username is already taken, calls this function
     public void OnRegisterFailed(){
-        Toast.makeText(RegisterActivity.this, "Username already taken!", Toast.LENGTH_LONG).show();
+        Toast.makeText(RegisterActivity.this, "Username already taken! Or one of the fields is empty", Toast.LENGTH_LONG).show();
     }
 
 }

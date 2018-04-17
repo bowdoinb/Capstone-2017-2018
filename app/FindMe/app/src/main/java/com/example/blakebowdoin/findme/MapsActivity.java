@@ -93,7 +93,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             // for ActivityCompat#requestPermissions for more details.
             return;
         } else {
-            locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER, 10000, 10, this);
+            locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER, 5500, 10, this);
 
 
         }
@@ -111,7 +111,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         switch(requestCode){
             case 1:
                 if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER, 10000, 10, this);
+                    locationManager.requestLocationUpdates(locationManager.NETWORK_PROVIDER, 5500, 10, this);
         }
     }
 
